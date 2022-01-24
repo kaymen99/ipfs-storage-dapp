@@ -103,13 +103,14 @@ Please install or have installed the following:
 
 <h3>Contracts</h3>
     In your ipfs-storage-dapp folder you'll find a directory contracts, all the smart contracts build in brownie are stored there. The FileStorage contract is the core of this application, it plays the role of the backend and has the following features:
-    
-    <ul>
-      <li><b>SetUploadFee:</b> for every file uploaded the user must pay a small fee set by the owner of the contract</li>
-      <li><b>Upload:</b> allows the user to upload his file </li>
-      <li><b>getUserFiles:</b> a function for getting all the files uploaded by a given user </li>
-      <li><b>Chainlink Price Feed:</b> the contract uses the price feed provided by chainlink oracle for converting the fee set by the owner from $ to MATIC    </li>   
-    </ul>
+    <div>
+      <ul>
+        <li><b>SetUploadFee:</b> for every file uploaded the user must pay a small fee set by the owner of the contract</li>
+        <li><b>Upload:</b> allows the user to upload his file </li>
+        <li><b>getUserFiles:</b> a function for getting all the files uploaded by a given user </li>
+        <li><b>Chainlink Price Feed:</b> the contract uses the price feed provided by chainlink oracle for converting the fee set by the owner from $ to MATIC    </li>   
+      </ul>
+   </div>
     
 <h3>Scripts</h3>
 
