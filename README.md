@@ -85,13 +85,13 @@ Please install or have installed the following:
    
    ![Capture d’écran 2022-01-25 à 00 14 44](https://user-images.githubusercontent.com/83681204/150881084-9b60349e-def0-44d2-bbb2-8ca7e27157c7.png)
    
-   After creating the app run this: 
+   After creating the app copy the URL from -view key- and run this: 
    ```sh
    cd ipfs-storage-dapp
-   brownie networks add Polygon polygon-mumbai host=https://polygon-mumbai.g.alchemy.com/v2/<Your-Key> chainid=80001 name="Mumbai Testnet (Alchemy)"
+   brownie networks add Polygon polygon-mumbai host=<Copied URL> chainid=80001 name="Mumbai Testnet (Alchemy)"
    ```
    
-  You'll also need testnet MATIC. You can get MATIC into your wallet by using the Polygon testnet faucets located [here](https://faucet.polygon.technology). 
+   You'll also need testnet MATIC. You can get MATIC into your wallet by using the Polygon testnet faucets located [here](https://faucet.polygon.technology). 
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -101,7 +101,33 @@ Please install or have installed the following:
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+<h3>Contracts</h3>
+    In your ipfs-storage-dapp folder you'll find a directory contracts, all the smart contracts build in brownie are stored there. The FileStorage contract is the core of this application, it plays the role of the backend and has the following features:
+    <ul>
+      <li><b>SetUploadFee:</b> for every file uploaded the user must pay a small fee set by the owner of the contract</li>
+      <li><b>Upload:</b> allows the user to upload his file </li>
+      <li><b>getUserFiles:</b> a function for getting all the files uploaded by a given user </li>
+      <li><b>Chainlink Price Feed:</b> the contract uses the price feed provided by chainlink oracle for converting the fee set by the owner from $ to MATIC      </li>
+      
+    </ul>
+<h3>Scripts</h3>
+
+   In your ipfs-storage-dapp folder you'll find a directory scripts, it contain all the python code for deploying your contracts and also some useful functions
+
+   The reset.py file is used to remove all previous contracts deployments from build directory:
+   ```sh
+   brownie run scripts/reset.py
+   ```
+   The deploy.py file allow the deployment to the blockchain, we'll use the local ganache for now:
+   ```sh
+   brownie run scripts/deploy.py --network ganache-local
+   ```
+   The update_front_end.py is used to transfer all the smart contracts data (abi,...) and addresses to front end:
+   ```sh
+   brownie run scripts/update_front_end.py
+   ```
+   
+   After running this 3 cammands, the fileStorage contract is now deployed and is integrated with the front end
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
