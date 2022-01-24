@@ -6,17 +6,20 @@
 
 ![Capture d’écran 2022-01-23 à 13 28 21](https://user-images.githubusercontent.com/83681204/150874956-c01456cf-0390-42b8-b72c-37bf5471aa17.png)
 
+
 This a decentralized application built on the Ethereum/Polygon blockchain, it works like Dropbox by allowing users to securely store their files on the blockchain using IPFS Technology
+
+### Built With
+
+* [solidity](https://docs.soliditylang.org/)
+* [Brownie](https://eth-brownie.readthedocs.io)
+* [React.js](https://reactjs.org/)
+* [ethers.js](https://docs.ethers.io/v5/)
 
 
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
@@ -33,21 +36,6 @@ This a decentralized application built on the Ethereum/Polygon blockchain, it wo
   </ol>
 </details>
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-### Built With
-
-* [solidity](https://docs.soliditylang.org/)
-* [Brownie](https://eth-brownie.readthedocs.io)
-* [React.js](https://reactjs.org/)
-* [ethers.js](https://docs.ethers.io/v5/)
-
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -60,7 +48,7 @@ Please install or have installed the following:
 
 ### Installation
 
-1. Install Brownie, Brownie is a python framework for smart contracts development,testing and deployments.It's quit like [HardHat](https://hardhat.org) but it uses python for writing test and deployements scripts instead of javascript
+1. Install Brownie, Brownie is a python framework for smart contracts development,testing and deployments. It's quit like [HardHat](https://hardhat.org) but it uses python for writing test and deployements scripts instead of javascript
    Here is a simple way to install brownie.
    ```
     pip install --user pipx
@@ -73,18 +61,38 @@ Please install or have installed the following:
     pip install eth-brownie
     ```
    
-3. Clone the repo
+3. Clone the repo:
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/Aymen1001/ipfs-storage-dapp.git
+   cd ipfs-storage-dapp
    ```
-3. Install NPM packages
+3. Install Ganache:
+   Ganache is a local blockchain that run on your machine, it's used during development stages because it allows quick smart contract testing and avoids all real         Testnets problems. You can install ganache from this link : https://trufflesuite.com/ganache/
+   
+   Next, you need to setup the network with brownie :
    ```sh
-   npm install
+   cd ipfs-storage-dapp
+   brownie networks add development ganache-local cmd=ganache-cli host=http://127.0.0.1 accounts=10 mnemonic=brownie port=8545
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+4. Set your environment variables
+   To be able to deploy to real Polygon testnets you need to add your PRIVATE_KEY (You can find your PRIVATE_KEY from your ethereum wallet like metamask) to the .env file:
    ```
+   PRIVATE_KEY=<PRIVATE_KEY>
+   ```
+   In this project i used the Polygon Testnet but you can choose to use ethereum testnets like rinkeby, Kovan.
+   
+   To setup the Polygon Testnet with brownie you'll need an Alchemy account (it's free) and just create a new app on the polygon network
+   
+   ![Capture d’écran 2022-01-25 à 00 14 44](https://user-images.githubusercontent.com/83681204/150881084-9b60349e-def0-44d2-bbb2-8ca7e27157c7.png)
+   
+   After creating the app run this: 
+   ```sh
+   cd ipfs-storage-dapp
+   brownie networks add Polygon polygon-mumbai host=https://polygon-mumbai.g.alchemy.com/v2/<Your-Key> chainid=80001 name="Mumbai Testnet (Alchemy)"
+   ```
+   
+  You'll also need testnet MATIC. You can get MATIC into your wallet by using the Polygon testnet faucets located [here](https://faucet.polygon.technology). 
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
