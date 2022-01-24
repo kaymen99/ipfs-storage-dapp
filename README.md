@@ -103,6 +103,7 @@ Please install or have installed the following:
 
 <h3>Contracts</h3>
     In your ipfs-storage-dapp folder you'll find a directory contracts, all the smart contracts build in brownie are stored there. The FileStorage contract is the core of this application, it plays the role of the backend and has the following features:
+    <br/>
     <div>
       <ul>
         <li><b>SetUploadFee:</b> for every file uploaded the user must pay a small fee set by the owner of the contract</li>
@@ -129,12 +130,27 @@ Please install or have installed the following:
    brownie run scripts/update_front_end.py
    ```
    
-   After running this 3 cammands, the fileStorage contract is now deployed and is integrated with the front end
+   After running this 3 cammands, the FileStorage contract is now deployed and is integrated with the front end
+  
+ <h3>Testing</h3>
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+   In your ipfs-storage-dapp folder you'll find a directory tests, it contain all the python code used for testing the smart contract functionalities
+   
+   You can run all the tests by :
+   ```sh
+   brownie test
+   ```
+   Or you can test each function individualy:
+   ```sh
+   brownie test -k <function name>
+   ```
+   
+ <h3>Front end</h3>
+   
+   The user interface of this application is build using React JS
+   
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- ROADMAP -->
