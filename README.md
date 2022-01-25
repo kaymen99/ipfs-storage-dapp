@@ -187,7 +187,15 @@ To learn about Smart Contract and Brownie:
 
 Thanks to [Patrick Collins](https://github.com/PatrickAlphaC) for his amazing 16 hours Smart contract course!!!
 
-Shoutout to [Gregory from Dapp University](https://youtu.be/1KwaUyjLa4Q) for the inspiration for this!
+Shoutout to [Gregory from Dapp University](https://youtu.be/1KwaUyjLa4Q) for the inspiration for this!!!
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+<!-- Contact -->
+## Contact
+
+If you have any question or problem running this project just contact me: AymenMir1001@gmail.com
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -198,6 +206,7 @@ Shoutout to [Gregory from Dapp University](https://youtu.be/1KwaUyjLa4Q) for the
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
 
 
 
