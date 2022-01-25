@@ -20,9 +20,9 @@ const ipfsBaseUrl = "https://ipfs.infura.io/ipfs/"
 const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 
 // contract address on ganache network
-// const ads = contractsAddress["5777"]["FileStorage"][0]
+const ads = contractsAddress["5777"]["FileStorage"][0]
 // contract address on polygon mumbai test network
-const ads = contractsAddress["80001"]["FileStorage"][0]
+// const ads = contractsAddress["80001"]["FileStorage"][0]
 
 const useStyles = makeStyles((theme) => ({
     Container: {
@@ -152,11 +152,11 @@ function FileStorage() {
 
     // ganache network is used for testing purposes 
 
-    //const currentNetwork = networks["1337"]
+    const currentNetwork = networks["1337"]
 
     // switch to polygon mainnet/testnet for production
 
-    const currentNetwork = networks["80001"]
+    // const currentNetwork = networks["80001"]
 
     const isGoodNet = data.network === currentNetwork
 
