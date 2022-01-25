@@ -147,8 +147,19 @@ Please install or have installed the following:
    
  <h3>Front end</h3>
    
-   The user interface of this application is build using React JS
-   
+   The user interface of this application is build using React JS, it can be started by running: 
+   ```sh
+   cd front-end
+   yarn
+   yarn start
+   ```
+   It uses the following libraries:
+      <ul>
+        <li><b>Ethers.js:</b> for conecting to Metamask and interacting with smart contract</li>
+        <li><b>ipfs-http-client:</b> for connecting  and uploading files to IPFS </li>
+        <li><b>@reduxjs/toolkit:</b> for managing the app states (account, balance, blockchain) </li>
+        <li><b>Material UI:</b> used for react components and styles </li>   
+      </ul>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
