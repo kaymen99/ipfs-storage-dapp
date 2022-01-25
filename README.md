@@ -171,9 +171,17 @@ Please install or have installed the following:
         <li><b>Ethers.js:</b> for conecting to Metamask and interacting with smart contract</li>
         <li><b>ipfs-http-client:</b> for connecting  and uploading files to IPFS </li>
         <li><b>@reduxjs/toolkit:</b> for managing the app states (account, balance, blockchain) </li>
-        <li><b>Material UI:</b> used for react components and styles </li>   
+        <li><b>Material UI:</b> used for react components and styles </li>    
       </ul>
-
+      
+   The files are structured as follows:
+    <ul>
+      <li><b>Components:</b> Contains all the app component(main, navbar, filestorage,...) </li>
+      <li><b>features:</b> contains the redux toolkit reducer and actions </li>
+      <li><b>artifacts:</b> contains all the smart contract data and addresses transfered earlier </li>
+      <li><b>NetworksMap:</b> a json file for some known blockchains names & chain id </li> 
+    </ul>
+   
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
