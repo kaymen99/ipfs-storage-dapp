@@ -53,7 +53,7 @@ Please install or have installed the following:
 
 ### Installation
 
-1. Install Brownie, Brownie is a python framework for smart contracts development,testing and deployments. It's quit like [HardHat](https://hardhat.org) but it uses python for writing test and deployements scripts instead of javascript
+1. Installing Brownie: Brownie is a python framework for smart contracts development,testing and deployments. It's quit like [HardHat](https://hardhat.org) but it uses python for writing test and deployements scripts instead of javascript.
    Here is a simple way to install brownie.
    ```
     pip install --user pipx
@@ -72,9 +72,10 @@ Please install or have installed the following:
    cd ipfs-storage-dapp
    ```
 3. Install Ganache:
-   Ganache is a local blockchain that run on your machine, it's used during development stages because it allows quick smart contract testing and avoids all real         Testnets problems. You can install ganache from this link : https://trufflesuite.com/ganache/
+   Ganache is a local blockchain that run on your machine, it's used during development stages because it allows quick smart contract testing and avoids all real         Testnets problems. 
+   You can install ganache from this link : https://trufflesuite.com/ganache/
    
-   Next, you need to setup the network with brownie :
+   Next, you need to setup the ganache network with brownie :
    ```sh
    cd ipfs-storage-dapp
    brownie networks add development ganache-local cmd=ganache-cli host=http://127.0.0.1 accounts=10 mnemonic=brownie port=8545
@@ -89,6 +90,7 @@ Please install or have installed the following:
    To setup the Polygon Testnet with brownie you'll need an Alchemy account (it's free) and just create a new app on the polygon network
    
    ![Capture d’écran 2022-01-25 à 00 14 44](https://user-images.githubusercontent.com/83681204/150881084-9b60349e-def0-44d2-bbb2-8ca7e27157c7.png)
+   
    
    After creating the app copy the URL from -view key- and run this: 
    ```sh
@@ -117,6 +119,7 @@ Please install or have installed the following:
     <li><b>Chainlink Price Feed:</b> the contract uses the price feed provided by chainlink oracle for converting the fee set by the owner from $ to MATIC    </li>   
   </ul>
 
+<p align="right">(<a href="#top">back to top</a>)</p>
     
 ### Scripts
 
@@ -136,6 +139,8 @@ Please install or have installed the following:
    ```
    
    After running this 3 cammands, the FileStorage contract is now deployed and is integrated with the front end
+   
+ <p align="right">(<a href="#top">back to top</a>)</p>
   
  ### Testing
 
@@ -149,6 +154,8 @@ Please install or have installed the following:
    ```sh
    brownie test -k <function name>
    ```
+   
+<p align="right">(<a href="#top">back to top</a>)</p>
    
 ### Front-end
    
@@ -179,6 +186,7 @@ To learn about Smart Contract and Brownie:
 
 
 Thanks to [Patrick Collins](https://github.com/PatrickAlphaC) for his amazing 16 hours Smart contract course!!!
+
 Shoutout to [Gregory from Dapp University](https://youtu.be/1KwaUyjLa4Q) for the inspiration for this!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
