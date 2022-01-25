@@ -27,12 +27,15 @@ This a decentralized application built on the Ethereum/Polygon blockchain, it wo
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li>
+      <a href="#usage">Usage</a>
+      <ul>
+        <li><a href="#contracts">Contracts</a></li>
+        <li><a href="#scripts">Scripts</a></li>
+      </ul>
+    </li>
+    <li><a href="#testing">Testing</a></li>
+    <li><a href="#front end">Front End</a></li>
   </ol>
 </details>
 
@@ -101,19 +104,19 @@ Please install or have installed the following:
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-<h3>Contracts</h3>
-    In your ipfs-storage-dapp folder you'll find a directory contracts, all the smart contracts build in brownie are stored there. The FileStorage contract is the core of this application, it plays the role of the backend and has the following features:
-    <br/>
-    <div>
-      <ul>
-        <li><b>SetUploadFee:</b> for every file uploaded the user must pay a small fee set by the owner of the contract</li>
-        <li><b>Upload:</b> allows the user to upload his file </li>
-        <li><b>getUserFiles:</b> a function for getting all the files uploaded by a given user </li>
-        <li><b>Chainlink Price Feed:</b> the contract uses the price feed provided by chainlink oracle for converting the fee set by the owner from $ to MATIC    </li>   
-      </ul>
-   </div>
+### Contracts
+
+   In your ipfs-storage-dapp folder you'll find a directory contracts, all the smart contracts build in brownie are stored there. The FileStorage contract is the core of this application, it plays the role of the backend and has the following features:
+
+  <ul>
+    <li><b>SetUploadFee:</b> for every file uploaded the user must pay a small fee set by the owner of the contract</li>
+    <li><b>Upload:</b> allows the user to upload his file </li>
+    <li><b>getUserFiles:</b> a function for getting all the files uploaded by a given user </li>
+    <li><b>Chainlink Price Feed:</b> the contract uses the price feed provided by chainlink oracle for converting the fee set by the owner from $ to MATIC    </li>   
+  </ul>
+
     
-<h3>Scripts</h3>
+### Scripts
 
    In your ipfs-storage-dapp folder you'll find a directory scripts, it contain all the python code for deploying your contracts and also some useful functions
 
@@ -132,7 +135,7 @@ Please install or have installed the following:
    
    After running this 3 cammands, the FileStorage contract is now deployed and is integrated with the front end
   
- <h3>Testing</h3>
+ ### Testing
 
    In your ipfs-storage-dapp folder you'll find a directory tests, it contain all the python code used for testing the smart contract functionalities
    
@@ -145,7 +148,7 @@ Please install or have installed the following:
    brownie test -k <function name>
    ```
    
- <h3>Front end</h3>
+### Front end
    
    The user interface of this application is build using React JS, it can be started by running: 
    ```sh
