@@ -32,10 +32,12 @@ This a decentralized application built on the Ethereum/Polygon blockchain, it wo
       <ul>
         <li><a href="#contracts">Contracts</a></li>
         <li><a href="#scripts">Scripts</a></li>
+        <li><a href="#testing">Testing</a></li>
+        <li><a href="#front-end">Front End</a></li>
       </ul>
     </li>
-    <li><a href="#testing">Testing</a></li>
-    <li><a href="#front end">Front End</a></li>
+    <li><a href="#resources">Resources</a></li>
+    <li><a href="#license">License</a></li>
   </ol>
 </details>
 
@@ -148,7 +150,7 @@ Please install or have installed the following:
    brownie test -k <function name>
    ```
    
-### Front end
+### Front-end
    
    The user interface of this application is build using React JS, it can be started by running: 
    ```sh
