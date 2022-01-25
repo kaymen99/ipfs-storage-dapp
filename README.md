@@ -11,10 +11,11 @@ This is a decentralized application built on the Ethereum/Polygon blockchain, it
 
 ### Built With
 
-* [solidity](https://docs.soliditylang.org/)
+* [Solidity](https://docs.soliditylang.org/)
 * [Brownie](https://eth-brownie.readthedocs.io)
 * [React.js](https://reactjs.org/)
 * [ethers.js](https://docs.ethers.io/v5/)
+* [material ui](https://mui.com/getting-started/installation/)
 
 
 <details>
@@ -134,7 +135,7 @@ Please install or have installed the following:
    ```sh
    brownie run scripts/deploy.py --network ganache-local
    ```
-   The update_front_end.py is used to transfer all the smart contracts data (abi,...) and addresses to front end:
+   The update_front_end.py is used to transfer all the smart contracts data (abi,...) and addresses to the front end in the artifacts directory:
    ```sh
    brownie run scripts/update_front_end.py
    ```
