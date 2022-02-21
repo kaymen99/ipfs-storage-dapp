@@ -15,6 +15,7 @@ This is a decentralized application built on the Ethereum/Polygon blockchain, it
 * [Brownie](https://eth-brownie.readthedocs.io)
 * [React.js](https://reactjs.org/)
 * [ethers.js](https://docs.ethers.io/v5/)
+* [web3modal](https://github.com/Web3Modal/web3modal)
 * [material ui](https://mui.com/getting-started/installation/)
 
 
