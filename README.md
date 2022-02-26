@@ -134,7 +134,7 @@ Please install or have installed the following:
    ```
    The deploy.py file allow the deployment to the blockchain, we'll use the local ganache for now:
    ```sh
-   brownie run scripts/deploy.py --network ganache-local
+   brownie run scripts/deploy.py --network=ganache-local
    ```
    The update_front_end.py is used to transfer all the smart contracts data (abi,...) and addresses to the front end in the artifacts directory:
    ```sh
