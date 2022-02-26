@@ -7,7 +7,7 @@
 ![Capture d’écran 2022-01-23 à 13 28 21](https://user-images.githubusercontent.com/83681204/150874956-c01456cf-0390-42b8-b72c-37bf5471aa17.png)
 
 
-This is a decentralized application built on the Ethereum/Polygon blockchain, it works like Dropbox by allowing users to securely store their files on the blockchain using IPFS Technology
+This is a decentralized application built on the Ethereum/Polygon blockchain, it works like Dropbox or Google Drive by allowing users to securely store their files on the blockchain using IPFS Technology
 
 ### Built With
 
