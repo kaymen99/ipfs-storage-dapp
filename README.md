@@ -195,11 +195,6 @@ To learn about Smart Contract and Brownie:
   * [Patrick Collins FreeCodeCamp Complete Course](https://youtu.be/M576WGiDBdQ)
   * ["Getting Started with Brownie"](https://iamdefinitelyahuman.medium.com/getting-started-with-brownie-part-1-9b2181f4cb99) is a good tutorial to help you familiarize yourself with Brownie.
 
-
-Thanks to [Patrick Collins](https://github.com/PatrickAlphaC) for his amazing 16 hours Smart contract course!!!
-
-Shoutout to [Gregory from Dapp University](https://youtu.be/1KwaUyjLa4Q) for the inspiration for this!!!
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
