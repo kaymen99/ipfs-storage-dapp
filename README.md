@@ -113,7 +113,7 @@ Please install or have installed the following:
 
 ### Contracts
 
-   In your ipfs-storage-dapp folder you'll find a directory contracts, all the smart contracts build in brownie are stored there. The FileStorage contract is the core of this application, it plays the role of the backend and has the following features:
+   In the ipfs-storage-dapp folder you'll find a directory contracts, all the smart contracts build in brownie are stored there. The FileStorage contract is the core of this application, it plays the role of the backend and has the following features:
 
   <ul>
     <li><b>SetUploadFee:</b> for every file uploaded the user must pay a small fee set by the owner of the contract</li>
@@ -126,7 +126,7 @@ Please install or have installed the following:
     
 ### Scripts
 
-   In your ipfs-storage-dapp folder you'll find a directory scripts, it contain all the python code for deploying your contracts and also some useful functions
+   In the ipfs-storage-dapp folder you'll find a directory scripts, it contain all the python code for deploying your contracts and also some useful functions
 
    The reset.py file is used to remove all previous contracts deployments from build directory:
    ```sh
