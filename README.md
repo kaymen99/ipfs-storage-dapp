@@ -201,7 +201,7 @@ To learn about Smart Contract and Brownie:
 <!-- Contact -->
 ## Contact
 
-If you have any question or problem running this project just contact me: AymenMir1001@gmail.com
+If you have any question or problem running this project just contact me: aymenMir1001@gmail.com
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
