@@ -69,6 +69,10 @@ Please install or have installed the following:
     ```
     pip install eth-brownie
     ```
+   Install [ganache-cli](https://www.npmjs.com/package/ganache-cli): 
+   ```sh
+    npm install -g ganache-cli
+    ```
    
 3. Clone the repo:
    ```sh
