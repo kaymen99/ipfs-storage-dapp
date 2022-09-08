@@ -76,7 +76,7 @@ Please install or have installed the following:
    
 3. Clone the repo:
    ```sh
-   git clone https://github.com/Aymen1001/ipfs-storage-dapp.git
+   git clone https://github.com/kaymen99/ipfs-storage-dapp.git
    cd ipfs-storage-dapp
    ```
 3. Install Ganache:
