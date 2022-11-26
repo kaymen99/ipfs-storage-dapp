@@ -1,8 +1,6 @@
 
 import React, { useEffect, useState } from "react"
 import { ethers, utils } from "ethers"
-import { create } from "ipfs-http-client"
-import { Buffer } from "buffer"
 import { useDispatch, useSelector } from "react-redux"
 import { connect } from "../features/blockchain"
 
@@ -15,11 +13,9 @@ import SmartContract from "../artifacts/contracts/FileStorage.json"
 import contractsAddress from "../artifacts/deployments/map.json"
 import networks from "../networksMap.json"
 
+import { StoreContent } from "./StoreContent";
 
-const ipfsClient = create("https://ipfs.infura.io:5001/api/v0")
-const ipfsBaseUrl = "https://ipfs.infura.io/ipfs/"
 const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-
 // contract address on ganache network
 const ads = contractsAddress["5777"]["FileStorage"][0]
 // contract address on polygon mumbai test network
@@ -71,27 +67,13 @@ function FileStorage() {
 
     // read uploaded file using FileReader and buffer
     const getFile = (e) => {
-
         e.preventDefault()
-
-        const reader = new window.FileReader();
-
         const file = e.target.files[0];
 
-        if (file !== undefined) {
-            reader.readAsArrayBuffer(file)
-
-            reader.onloadend = () => {
-
-                const buf = Buffer(reader.result, "base64")
-                setSelectedFile(buf)
-                setisSelected(true)
-
-                setName(file.name)
-                setSize(file.size)
-            }
-        }
-
+        setSelectedFile(file);
+        setisSelected(true);
+        setName(file.name);
+        setSize(file.size);
     }
 
     // a function to convert file size to readable format ex: KB, MB...
@@ -114,10 +96,9 @@ function FileStorage() {
 
                 const signer = await provider.getSigner()
                 const storageContract = new ethers.Contract(ads, SmartContract.abi, signer);
-
-                const addedFile = await ipfsClient.add(selectedFile)
-
-                const ipfsHash = ipfsBaseUrl + addedFile.path
+                
+                const cid = await StoreContent(selectedFile);
+                const ipfsHash = `ipfs://${cid}/${name}`;
 
                 const fee = await storageContract.getListingFee()
 
@@ -211,12 +192,13 @@ function FileStorage() {
                                 {userFiles.map((fileData, i) => {
 
                                     const uploadDate = new Date(fileData.uploadDate.toNumber() * 1000).toLocaleString()
+                                    const uri = fileData.uri.replace("ipfs://", "https://gateway.pinata.cloud/ipfs/");
                                     return (
                                         <ListItem key={i}>
                                             <ListItemIcon>
                                                 <Folder />
                                             </ListItemIcon>
-                                            <a href={fileData.uri} style={{ textDecoration: 'none', color: "black" }}>
+                                            <a href={uri} style={{ textDecoration: 'none', color: "black" }}>
                                                 <ListItemText
                                                     primary={fileData.name}
                                                     secondary={niceBytes(fileData.size) + "   ||   " + uploadDate}
