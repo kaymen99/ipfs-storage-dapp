@@ -1,107 +1,120 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from "react-redux"
-import { connect, disconnect } from "../features/blockchain"
-import { ethers, utils } from "ethers"
-import { Button, makeStyles } from "@material-ui/core"
-import Web3Modal from "web3modal"
+import React, { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.css";
+import { useDispatch, useSelector } from "react-redux";
+import { connect, disconnect } from "../features/blockchain";
+import { ethers, utils } from "ethers";
+import { Modal } from "react-bootstrap";
+import { Button } from "@mui/material";
+import Web3Modal from "web3modal";
 
-import networks from "../networksMap.json"
+import networks from "../utils/networksMap.json";
 
-
-const eth = window.ethereum
-const web3Modal = new Web3Modal()
-
-const useStyles = makeStyles((theme) => ({
-
-    container: {
-        padding: theme.spacing(3),
-        display: "flex",
-        float: "right",
-        gap: theme.spacing(1)
-    },
-
-
-}));
+const eth = window.ethereum;
+const web3Modal = new Web3Modal();
 
 function Account() {
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.blockchain.value);
 
-    const classes = useStyles()
-    const dispatch = useDispatch()
-    const data = useSelector((state) => state.blockchain.value)
+  const [injectedProvider, setInjectedProvider] = useState();
+  const [show, setShow] = useState(false);
 
-    const [injectedProvider, setInjectedProvider] = useState();
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-    async function fetchAccountData() {
-        const connection = await web3Modal.connect()
-        const provider = new ethers.providers.Web3Provider(connection)
+  async function fetchAccountData() {
+    const connection = await web3Modal.connect();
+    const provider = new ethers.providers.Web3Provider(connection);
 
-        setInjectedProvider(provider);
+    setInjectedProvider(provider);
 
-        const signer = await provider.getSigner()
-        const chainId = await provider.getNetwork()
-        const account = await signer.getAddress()
-        const balance = await signer.getBalance()
+    const signer = await provider.getSigner();
+    const chainId = await provider.getNetwork();
+    const account = await signer.getAddress();
+    const balance = await signer.getBalance();
 
-        dispatch(connect(
-            {
-                account: account,
-                balance: utils.formatUnits(balance),
-                network: networks[String(chainId.chainId)]
-            }
-        ))
+    dispatch(
+      connect({
+        account: account,
+        balance: utils.formatUnits(balance),
+        network: networks[String(chainId.chainId)],
+      })
+    );
+  }
+
+  async function Disconnect() {
+    web3Modal.clearCachedProvider();
+    if (
+      injectedProvider &&
+      injectedProvider.provider &&
+      typeof injectedProvider.provider.disconnect == "function"
+    ) {
+      await injectedProvider.provider.disconnect();
+      setInjectedProvider(null);
     }
 
-    async function Disconnect() {
-        web3Modal.clearCachedProvider();
-        if (injectedProvider && injectedProvider.provider && typeof injectedProvider.provider.disconnect == "function") {
-            await injectedProvider.provider.disconnect();
-            setInjectedProvider(null)
-        }
+    dispatch(disconnect());
+    setTimeout(() => {
+      window.location.reload();
+    }, 1);
+  }
 
-        dispatch(disconnect())
-        setTimeout(() => {
-            window.location.reload();
-        }, 1);
+  useEffect(() => {
+    if (eth) {
+      eth.on("chainChanged", (chainId) => {
+        fetchAccountData();
+      });
+      eth.on("accountsChanged", (accounts) => {
+        fetchAccountData();
+      });
     }
+  }, []);
 
-    useEffect(() => {
-        if (eth) {
-            eth.on('chainChanged', (chainId) => {
-                fetchAccountData()
-            })
-            eth.on('accountsChanged', (accounts) => {
-                fetchAccountData()
-            })
-        }
-    }, [])
+  const isConnected = data.account !== "";
 
-    const isConnected = data.account !== ""
-
-    const shortenAddress = (address) => `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
-
-    return (
-
-        <div className={classes.container}>
-            {isConnected ? (
-                <>
-                    <Button variant='contained' color="primary" >
-                        {parseFloat(data.balance).toFixed(4)}
-                    </Button>
-                    <Button variant='contained' color="primary" onClick={() => { Disconnect() }} >
-                        {shortenAddress(data.account)}
-                    </Button>
-                </>
-            ) : (
-
-
-                <Button variant='contained' color="primary" onClick={() => { fetchAccountData() }}>connect</Button>
-
-            )}
-
+  return (
+    <>
+      {isConnected ? (
+        <div style={{ height: "10px", paddingTop: "10px" }}>
+          <Button variant="contained" color="primary" onClick={handleShow}>
+            {data.account &&
+              `${data.account.slice(0, 6)}...${data.account.slice(
+                data.account.length - 4,
+                data.account.length
+              )}`}
+          </Button>
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Wallet</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <p>Account: {data.account}</p>
+              <p>
+                Balance: {data.balance && parseFloat(data.balance).toFixed(4)}{" "}
+                ETH
+              </p>
+              <p>Network: {data.network}</p>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="contained" color="error" onClick={Disconnect}>
+                Disconnect
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </div>
-    )
+      ) : (
+        <div style={{ height: "10px", paddingTop: "10px" }}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={fetchAccountData}
+          >
+            Connect Wallet
+          </Button>
+        </div>
+      )}
+    </>
+  );
 }
 
-export default Account
-
-
+export default Account;
