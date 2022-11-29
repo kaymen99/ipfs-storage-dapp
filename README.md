@@ -106,7 +106,7 @@ Please install or have installed the following:
    
    You'll also need testnet MATIC. You can get MATIC into your wallet by using the Polygon testnet faucets located [here](https://faucet.polygon.technology). 
    
-5. As infura recently removed its free IPFS gateway i used `web3.storage` api for storing rentals images into IPFS, this api is as simple as infura it requires the creation of a free account and a new api token which you can do [here](https://web3.storage), when you finish add your api token into the `src/utils/StoreContent.js` file:
+5. As infura recently removed its free IPFS gateway i used `web3.storage` api for files into IPFS, this api is as simple as infura it requires the creation of a free account and a new api token which you can do [here](https://web3.storage), when you finish add your api token into the `src/utils/StoreContent.js` file:
    ```js
     const web3storage_key = "YOUR-WEB3.STORAGE-API-TOKEN";
    ```
