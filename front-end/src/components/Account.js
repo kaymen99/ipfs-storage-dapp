@@ -23,23 +23,28 @@ function Account() {
   const handleShow = () => setShow(true);
 
   async function fetchAccountData() {
-    const connection = await web3Modal.connect();
-    const provider = new ethers.providers.Web3Provider(connection);
+    if (typeof window.ethereum !== "undefined") {
+      const connection = await web3Modal.connect();
+      const provider = new ethers.providers.Web3Provider(connection);
 
-    setInjectedProvider(provider);
+      setInjectedProvider(provider);
 
-    const signer = await provider.getSigner();
-    const chainId = await provider.getNetwork();
-    const account = await signer.getAddress();
-    const balance = await signer.getBalance();
+      const signer = provider.getSigner();
+      const chainId = await provider.getNetwork();
+      const account = await signer.getAddress();
+      const balance = await signer.getBalance();
 
-    dispatch(
-      connect({
-        account: account,
-        balance: utils.formatUnits(balance),
-        network: networks[String(chainId.chainId)],
-      })
-    );
+      dispatch(
+        connect({
+          account: account,
+          balance: utils.formatUnits(balance),
+          network: networks[String(chainId.chainId)],
+        })
+      );
+    } else {
+      console.log("Please install metamask");
+      window.alert("Please Install Metamask");
+    }
   }
 
   async function Disconnect() {
