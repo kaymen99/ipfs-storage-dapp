@@ -57,11 +57,7 @@ function Account() {
       await injectedProvider.provider.disconnect();
       setInjectedProvider(null);
     }
-
     dispatch(disconnect());
-    setTimeout(() => {
-      window.location.reload();
-    }, 1);
   }
 
   useEffect(() => {
@@ -80,7 +76,7 @@ function Account() {
   return (
     <>
       {isConnected ? (
-        <div style={{ height: "10px", paddingTop: "10px" }}>
+        <div>
           <Button variant="contained" color="primary" onClick={handleShow}>
             {data.account &&
               `${data.account.slice(0, 6)}...${data.account.slice(
@@ -108,7 +104,7 @@ function Account() {
           </Modal>
         </div>
       ) : (
-        <div style={{ height: "10px", paddingTop: "10px" }}>
+        <div>
           <Button
             variant="contained"
             color="primary"
