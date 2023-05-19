@@ -16,7 +16,11 @@ import {
   CircularProgress,
 } from "@mui/material";
 import { Folder } from "@mui/icons-material";
-import { StoreContent, IPFS_GATEWAY } from "../utils/StoreContent";
+import {
+  StoreContent,
+  StoreManyFiles,
+  IPFS_GATEWAY,
+} from "../utils/StoreContent";
 import SmartContract from "../artifacts/contracts/FileStorage.json";
 import contractsAddress from "../artifacts/deployments/map.json";
 import networks from "../utils/networksMap.json";
@@ -163,15 +167,21 @@ function FileStorage() {
         let cid;
         let filename;
         if (uploadedFiles.isFolder) {
-          cid = await StoreContent(
-            new File([uploadedFiles.content], uploadedFiles.name)
-          );
-          filename = uploadedFiles.name.slice(0, uploadedFiles.name.length - 4);
+          // Case 1 : upload zip folder
+
+          // cid = await StoreContent(
+          //   new File([uploadedFiles.content], uploadedFiles.name)
+          // );
+          // filename = uploadedFiles.name.slice(0, uploadedFiles.name.length - 4);
+
+          // Case 2 : upload html website
+          filename = files[0].name;
+          cid = await StoreManyFiles(files);
         } else {
           filename = uploadedFiles.name;
           cid = await StoreContent(uploadedFiles.content);
         }
-        const ipfsHash = `ipfs://${cid}/${uploadedFiles.name}`;
+        const ipfsHash = `ipfs://${cid}/${filename}`;
 
         const fee = await storageContract.getListingFee();
         const add_tx = await storageContract.uploadFile(
@@ -189,6 +199,7 @@ function FileStorage() {
         setUploadedFiles({
           name: "",
           content: null,
+          isFolder: false,
         });
         setTotalSize(null);
 
@@ -218,7 +229,7 @@ function FileStorage() {
       setUserFiles(filesList);
     }
   };
-  
+
   useEffect(() => {
     if (files.length > 0) {
       calculateTotalSize();
@@ -231,7 +242,7 @@ function FileStorage() {
       getUserFiles();
     }
   }, [userFiles, data.account, data.network]);
-  
+
   // ganache network is used for testing purposes
   const currentNetwork = networks["1337"];
 
