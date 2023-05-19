@@ -291,39 +291,39 @@ function FileStorage() {
               </div>
               {files.length > 0 && (
                 <div>
+                  <h3>Selected Files</h3>
                   {files.length > 1 && (
                     <>
-                      <h3>Selected Files</h3>
                       <progress max={100} value={progress}>
                         {progress?.toFixed(2)}%{" "}
                       </progress>
-                      <div className="table-container">
-                        <table className="table">
-                          <thead>
-                            <tr>
-                              <th className="file-name">File Name</th>
-                              <th className="file-size">Size</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {files.map((file, index) => (
-                              <tr key={index}>
-                                <td className="file-name">
-                                  {file.webkitRelativePath || file.name}
-                                </td>
-                                <td className="file-size">
-                                  {formatFileSize(file.size)}
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                      <div className="total-size">
-                        Total Size: {formatFileSize(totalSize)}
-                      </div>
                     </>
                   )}
+                  <div className="table-container">
+                    <table className="table">
+                      <thead>
+                        <tr>
+                          <th className="file-name">File Name</th>
+                          <th className="file-size">Size</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {files.map((file, index) => (
+                          <tr key={index}>
+                            <td className="file-name">
+                              {file.webkitRelativePath || file.name}
+                            </td>
+                            <td className="file-size">
+                              {formatFileSize(file.size)}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <div className="total-size">
+                    Total Size: {formatFileSize(totalSize)}
+                  </div>
                 </div>
               )}
             </div>
