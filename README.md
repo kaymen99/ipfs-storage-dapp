@@ -3,7 +3,7 @@
 <!-- ABOUT THE PROJECT -->
 ## IPFS storage Dapp
 
-![Capture d’écran 2022-11-27 à 01 51 27](https://user-images.githubusercontent.com/83681204/204114387-e35f4d68-3211-429b-8fdc-f3cb62f5867c.png)
+![Capture d’écran 2023-05-19 à 01 46 07](https://github.com/kaymen99/ipfs-storage-dapp/assets/83681204/f4f05d87-a70e-4842-a1ac-bda65886cb17)
 
 This is a decentralized application built on the Ethereum/Polygon blockchain, it works like Dropbox or Google Drive by allowing users to securely store their files on the blockchain using IPFS Technology
 
